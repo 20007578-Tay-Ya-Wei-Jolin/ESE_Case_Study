@@ -2,6 +2,13 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	private static final int DISPLAY_APPOINTMENT = 4;
+	private static final int VIEW_PARTS = 3;
+	private static final int VIEW_CARS = 2;
+	private static final int VISITOR_REGISTRATION = 1;
+
+	//Test
+	
 	public static void main(String[] args) {
 
 		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
@@ -12,19 +19,35 @@ public class C206_CaseStudy {
 
 			option = Helper.readInt("Enter an option > ");
 
-			if (option == 1) {
+			if (option == VISITOR_REGISTRATION) {
 				// Visitor Registration
 
-			} else if (option == 2) {
+			} else if (option == VIEW_CARS) {
 				// View cars
 
-			} else if (option == 3) {
+			} else if (option == VIEW_PARTS) {
 				// View parts
 
-			} else if (option == 4) {
+			} else if (option == DISPLAY_APPOINTMENT) {
 				// Display appointment
-				Appointment appt1 = inputAppointment();
-				C206_CaseStudy.addAppointmentSchedule(appointmentList, appt1);
+
+				menuForAppointment();
+
+				int choice = 0;
+
+				if (choice == 1) {
+					C206_CaseStudy.viewAppointmentSchedule(appointmentList);
+
+				} else if (choice == 2) {
+					Appointment appt1 = inputAppointment();
+					C206_CaseStudy.addAppointmentSchedule(appointmentList, appt1);
+
+				} else if (choice == 3) {
+					C206_CaseStudy.updateAppointmentSchedule(appointmentList);
+
+				} else {
+					System.out.println("Invalid choice!");
+				}
 
 			} else if (option == 5) {
 				System.out.println("Bye!");
@@ -43,6 +66,14 @@ public class C206_CaseStudy {
 		System.out.println("4. Display appointment schedule");
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
+
+	}
+
+	public static void menuForAppointment() {
+
+		System.out.println("1. View Appointment");
+		System.out.println("2. Add Appointment");
+		System.out.println("3.Update Appointment");
 
 	}
 
